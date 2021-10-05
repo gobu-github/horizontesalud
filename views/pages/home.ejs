@@ -12,7 +12,23 @@
     </header>
 
     <main>
-        <div id="mapid"></div>
+        <div class="row justify-content-evenly">
+            <div class="col-6">
+                <div class="row justify-content-between">
+                    <div class="col-4" style="background-color: red;">
+                        One of two columns
+                    </div>
+                    <div class="col-8" style="background-color: blue;">
+                        One of two columns
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div id="mapid"></div>
+            </div>
+
+        </div>
+
     </main>
 
     <footer>
@@ -20,5 +36,20 @@
     </footer>
 
 </body>
+
+<script>
+    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+        maxZoom: 18
+    }).addTo(mymap);
+</script>
+
+<style>
+    #mapid {
+        height: 15rem;
+    }
+</style>
 
 </html>
