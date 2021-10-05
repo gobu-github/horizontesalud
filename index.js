@@ -10,6 +10,10 @@ app.use("/js", express.static("./node_modules/jquery/dist"));
 //Setear como motor de plantillas ejs
 //Va a buscar los archivos que terminen en .ejs
 app.set('view engine', 'ejs');
+app.set('views', './views');
+
+app.use(express.static('./views'));
+app.use(express.static('./src'));
 
 //Home page
 app.get('/', function (req, res) {
