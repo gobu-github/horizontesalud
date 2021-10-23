@@ -1,0 +1,23 @@
+.logo-navbar {
+  width: 4rem;
+}
+
+.home-body {
+  margin: 2rem !important;
+}
+
+.form-control-custom {
+  margin: 1rem;
+}
+
+.form-select {
+  margin: 1rem auto;
+}
+
+.btn-container {
+  margin: 1rem;
+}
+
+.full-width {
+  width: 100%
+}

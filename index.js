@@ -14,6 +14,7 @@ app.set('views', './views');
 
 app.use(express.static('./views'));
 app.use(express.static('./src'));
+app.use(express.static('public'));
 
 //Home page
 app.get('/', function (req, res) {
