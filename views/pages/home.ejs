@@ -87,19 +87,12 @@
 </body>
 
 <script>
-  // var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-  //
-  // L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  //   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-  //   maxZoom: 18
-  // }).addTo(mymap);
+  var mymap = L.map('mapid').setView([-32.94210704622841, -60.65314387346393], 13);
 
-  var map = L.map('mapid').setView([0, -0.35156], 1);
-      var gl = L.mapboxGL({
-        attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
-        style: 'https://api.maptiler.com/maps/d6a1a382-5390-49eb-9947-a16c447fbf73/style.json?key=UXSrSvahh9DPu62iWUnB'
-      }).addTo(map);
-
+  L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+    maxZoom: 18
+  }).addTo(mymap);
 </script>
 
 <style>
