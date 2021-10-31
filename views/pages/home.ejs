@@ -33,30 +33,26 @@
           <select class="form-select form-control-custom" aria-label="Provincia">
             <option selected>Elegir provincia</option>
             <option value="1">Santa fe</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
           </select>
-          <select class="form-select form-control-custom" aria-label="Ciudad">
+          <select class="form-select form-control-custom" aria-label="Ciudad" id="ciudad">
             <option selected>Elegir ciudad</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option value="1">Rosario</option>
+            <option value="2">Santa fe</option>
           </select>
 
           <div class="card">
             <div class="card-body">
               <div class="form-check form-control-custom">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="" id="sistemaPrivado">
+                <label class="form-check-label" for="sistemaPrivado">
                   Sistema privado
                 </label>
               </div>
-              <br>
-              <select class="form-select form-control-custom" aria-label="Ciudad">
-                <option selected>Elegir ciudad</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select class="form-select form-control-custom" aria-label="Obra social" id="obraSocial">
+                <option selected>Elegir obra social</option>
+                <option value="1">Medife</option>
+                <option value="2">Swiss Medical</option>
+                <option value="3">OSUNR</option>
               </select>
             </div>
           </div>
@@ -84,20 +80,59 @@
     <%- include('../partials/footer'); %>
   </footer>
 
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+
 </body>
 
 <script>
-  var mymap = L.map('mapid').setView([-32.94210704622841, -60.65314387346393], 13);
+
+  var mymap = L.map('mapid').setView([-32.94210704622841, -60.65314387346393], 15);
 
   L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-    maxZoom: 18
-  }).addTo(mymap);
+  attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+  maxZoom: 18,
+}).addTo(mymap);
+
+  var greenIcon = L.icon({
+    iconUrl: './assets/leaf-green.png',
+
+    iconSize:     [38, 95], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+L.marker([-32.94210704622841, -60.65314387346393], {icon: greenIcon}).addTo(mymap);
+
+setTimeout(function () {
+    mymap.invalidateSize();
+}, 0);
+
+// Hide the div when the page loads
+$("#obraSocial").hide();
+
+// Listen for the checkbox to be checked
+$("input[type=checkbox]").click(function() {
+
+  if (this.checked)
+  {
+    $("#obraSocial").show();
+  }
+  else
+  {
+    $("#obraSocial").hide();
+  }
+
+});
+
 </script>
 
 <style>
   #mapid {
     height: 25rem;
+    width: auto;
   }
 </style>
 
