@@ -31,6 +31,16 @@ app.get('/help', function (req, res) {
     res.render('pages/help');
 });
 
+//Legal page
+app.get('/legal', function (req, res) {
+    res.render('pages/legal');
+});
+
+//Contact page
+app.get('/contact', function (req, res) {
+    res.render('pages/contact');
+});
+
 //Iniciar servidor
 app.listen(8000, () => {
     console.log("Servidor iniciado");
