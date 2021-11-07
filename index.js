@@ -7,6 +7,10 @@ app.use("/css", express.static('./node_modules/bootstrap/dist/css'));
 app.use("/js", express.static("./node_modules/bootstrap/dist/js"));
 app.use("/js", express.static("./node_modules/jquery/dist"));
 
+app.use("/css", express.static('./node_modules/leaflet.markercluster/dist/MarkerCluster.css'));
+app.use("/css", express.static('./node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css'));
+app.use("/js", express.static('./node_modules/leaflet.markercluster/dist/leaflet.markercluster.js'));
+
 //Setear como motor de plantillas ejs
 //Va a buscar los archivos que terminen en .ejs
 app.set('view engine', 'ejs');

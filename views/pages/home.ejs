@@ -1,200 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <%- include('../partials/head'); %>
-  </head>
+<head>
+  <%- include('../partials/head'); %>
+</head>
 
-  <body class="container">
+<body class="container">
 
-    <header>
-      <%- include('../partials/nav'); %>
-    </header>
+  <header>
+    <%- include('../partials/nav'); %>
+  </header>
 
-    <main>
-      <div class="row justify-content-evenly home-body">
-        
-        <div class="col-4">
-          <div class="row justify-content-between">
+  <main>
+    <div class="row justify-content-evenly home-body">
 
-            <!-- RADIO BUTTON DIALISIS-->
+      <div class="col-4">
+        <div class="row justify-content-between">
+
+          <!-- RADIO BUTTON DIALISIS-->
+          <div class="form-check form-control-custom">
+            <input class="form-check-input" type="radio" name="tipoTratamiento" value="Diálisis">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Diálisis
+            </label>
+          </div>
+
+          <!-- RADIO BUTTON ONCOLOGÍA-->
+          <div class="form-check form-control-custom">
+            <input class="form-check-input" type="radio" name="tipoTratamiento" id="oncologia" value="Oncología">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Oncología
+            </label>
+          </div>
+
+        </div>
+
+        <!-- SELECT PROVINCIA-->
+        <select class="form-select form-control-custom" aria-label="Provincia">
+          <option selected>Elegir provincia</option>
+          <option value="1">Santa fe</option>
+          <option value="2">Córdoba</option>
+          <option value="3">Entre Ríos</option>
+        </select>
+
+        <!-- SELECT CIUDAD-->
+        <select class="form-select form-control-custom" aria-label="Ciudad" id="ciudadSelect">
+          <option selected>Elegir ciudad</option>
+          <option value="Rosario">Rosario</option>
+          <option value="Alta Gracia">Alta Gracia</option>
+          <option value="Concordia">Concordia</option>
+        </select>
+
+        <!-- SELECT SISTEMA PRIVADO-->
+        <div class="card">
+
+          <div class="card-body">
+
             <div class="form-check form-control-custom">
-              <input class="form-check-input" type="radio" name="tipoTratamiento" value="Diálisis">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Diálisis
+              <input class="form-check-input" type="checkbox" value="" id="sistemaPrivado">
+              <label class="form-check-label" for="sistemaPrivado">
+                Sistema privado
               </label>
             </div>
 
-            <!-- RADIO BUTTON ONCOLOGÍA-->
-            <div class="form-check form-control-custom">
-              <input class="form-check-input" type="radio" name="tipoTratamiento" id="oncologia" value="Oncología">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Oncología
-              </label>
-            </div>
+            <select class="form-select form-control-custom" aria-label="Obra social" id="obraSocial">
+              <option selected>Elegir obra social</option>
+              <option value="1">Medife</option>
+              <option value="2">Swiss Medical</option>
+              <option value="3">OSUNR</option>
+            </select>
 
           </div>
-
-          <!-- SELECT PROVINCIA-->
-          <select class="form-select form-control-custom" aria-label="Provincia">
-            <option selected>Elegir provincia</option>
-            <option value="1">Santa fe</option>
-            <option value="2">Córdoba</option>
-            <option value="3">Entre Ríos</option>
-          </select>
-
-          <!-- SELECT CIUDAD-->
-          <select class="form-select form-control-custom" aria-label="Ciudad" id="ciudad">
-            <option selected>Elegir ciudad</option>
-            <option value="1">Rosario</option>
-            <option value="2">Alta Gracia</option>
-            <option value="2">Concordia</option>
-          </select>
-
-          <!-- SELECT SISTEMA PRIVADO-->
-          <div class="card">
-            
-            <div class="card-body">
-              
-              <div class="form-check form-control-custom">
-                <input class="form-check-input" type="checkbox" value="" id="sistemaPrivado">
-                <label class="form-check-label" for="sistemaPrivado">
-                  Sistema privado
-                </label>
-              </div>
-              
-              <select class="form-select form-control-custom" aria-label="Obra social" id="obraSocial">
-                <option selected>Elegir obra social</option>
-                <option value="1">Medife</option>
-                <option value="2">Swiss Medical</option>
-                <option value="3">OSUNR</option>
-              </select>
-              
-            </div>
-          </div>
-
-            
-          <div class="btn-container">
-            
-            <!-- BTN LIMPIAR FILTRO-->
-            <div class="row justify-content-evenly">
-              <div class="col-6">
-                <button type="submit" class="btn btn-primary full-width">Limpiar filtros</button>
-              </div>
-
-              <!-- BTN BUSCAR-->
-              <div class="col-6">
-                <button class="btn btn-primary full-width" onclick="search()">Buscar</button>
-              </div>
-            </div>
-
-          </div>
-
-          <div id="testing"></div>
-        
         </div>
-        
-        <div class="col-8">
-          <div id="mapid"></div>
+
+
+        <div class="btn-container">
+
+          <!-- BTN LIMPIAR FILTRO-->
+          <div class="row justify-content-evenly">
+            <div class="col-6">
+              <button type="submit" class="btn btn-primary full-width">Limpiar filtros</button>
+            </div>
+
+            <!-- BTN BUSCAR-->
+            <div class="col-6">
+              <button class="btn btn-primary full-width" onclick="search()">Buscar</button>
+            </div>
+          </div>
+
         </div>
+
+        <div id="testing"></div>
 
       </div>
-    </main>
 
-    <footer>
-      <%- include('../partials/footer'); %>
-    </footer>
+      <div class="col-8">
+        <div id="mapa"></div>
+      </div>
 
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    </div>
+  </main>
 
-  </body>
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
 
-  <script>
-    var mymap = L.map('mapid').setView([-32.94210704622841, -60.65314387346393], 12);
+</body>
 
-    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-      maxZoom: 18,
-    }).addTo(mymap);
+<script>
+  let ultimaCapa;
 
-    var greenIcon = L.icon({
-      iconUrl: './assets/point_horizonte_salud.svg',
+  const LATITUD_CENTRO = -32.94682,
+    LONGITUD_CENTRO = -60.63932,
+    ZOOM = 15;
 
-      iconSize: [300, 150], // size of the icon
-      iconAnchor: [146, 90], // point of the icon which will correspond to marker's location
-      popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+  const mapa = new ol.Map({
+    target: 'mapa', // el id del elemento en donde se monta
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      })
+    ],
+    view: new ol.View({
+      center: ol.proj.fromLonLat([LONGITUD_CENTRO, LATITUD_CENTRO]),
+      zoom: ZOOM,
+    })
+  });
+
+  function generateMarkers(centros) {
+    if (ultimaCapa) {
+      mapa.removeLayer(ultimaCapa);
+    }
+
+    // marcadores debe ser un arreglo
+    const marcadores = []; // Arreglo para que se puedan agregar otros más tarde
+
+    centros.forEach(c => {
+      //Crear marcador
+      let marcador = new ol.Feature({
+        geometry: new ol.geom.Point(
+          ol.proj.fromLonLat([c.longitud, c.latitud]) // En dónde se va a ubicar
+        ),
+      });
+      // Agregamos icono
+      marcador.setStyle(new ol.style.Style({
+        image: new ol.style.Icon({
+          src: "./assets/point_horizonte_salud.svg",
+        })
+      }));
+      marcadores.push(marcador); // Agregamos el marcador al arreglo
     });
-
-    setTimeout(function() {
-      mymap.invalidateSize();
-    }, 0);
-
-    // Hide the div when the page loads
-    $("#obraSocial").hide();
-
-    // Listen for the checkbox to be checked
-    $("input[type=checkbox]").click(function() {
-      if (this.checked) {
-        $("#obraSocial").show();
-      } else {
-        $("#obraSocial").hide();
-      }
+    ultimaCapa = new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: marcadores,
+      }),
     });
+    mapa.addLayer(ultimaCapa);
+  }
 
-    function getFilters() {
+  // Hide the div when the page loads
+  $("#obraSocial").hide();
+
+  // Listen for the checkbox to be checked
+  $("input[type=checkbox]").click(function() {
+    if (this.checked) {
+      $("#obraSocial").show();
+    } else {
+      $("#obraSocial").hide();
+    }
+  });
+
+  function getFilters() {
     var ele = document.getElementsByName('tipoTratamiento');
     for (i = 0; i < ele.length; i++) {
       if (ele[i].checked) {
         tratamiento = ele[i].value;
       }
     }
+    var e = document.getElementById("ciudadSelect");
+    ciudadElegida = e.value;
+  }
+
+  function filtrarCentros(elemento) {
+    getFilters();
+    if (elemento.tratamiento.includes(tratamiento) && elemento.ciudad == ciudadElegida) {
+      return true;
+    } else {
+      return false;
     }
+  }
 
-    function filtrarCentros(elemento) {
-      getFilters()
-      if (elemento.tratamiento.includes(tratamiento)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
+  function search() {
+    var centrosFiltrados = listadoCentros.filter(filtrarCentros);
+    generateMarkers(centrosFiltrados);
+  }
 
-    function search() {
-      var centrosFiltrados = listadoCentros.filter(filtrarCentros);
-      generateMarkers(centrosFiltrados);
-    }
+  listadoCentros = [
+    //ROSARIO
+    {
+      nombre: 'Hospital Provincial del Centenario',
+      tratamiento: ['Diálisis'],
+      ciudad: 'Rosario',
+      privado: false,
+      latitud: -32.93865866198946,
+      longitud: -60.66511115823101
+    },
+    {
+      nombre: 'Hospital Privado de Rosario',
+      tratamiento: ['Oncología'],
+      ciudad: 'Rosario',
+      privado: true,
+      latitud: -32.9645474597667,
+      longitud: -60.65022193124232,
+      obraSocial: ['Medife', 'OSUNR', 'Swiss Medical']
+    },
+    {
+      nombre: 'Hospital de niños zona norte',
+      tratamiento: ['Diálisis'],
+      ciudad: 'Rosario',
+      privado: false,
+      latitud: -32.912240122326956,
+      longitud: -60.68219110240826
+    },
+    {
+      nombre: 'Centro de Nefrología y Diálisis del Rosario',
+      tratamiento: ['Diálisis'],
+      ciudad: 'Rosario',
+      privado: true,
+      latitud: -32.9482899,
+      longitud: -60.6557773
+    },
+    {
+      nombre: 'Centro Integral de Diálisis',
+      tratamiento: ['Diálisis'],
+      ciudad: 'Rosario',
+      privado: true,
+      latitud: -32.9644117,
+      longitud: -60.6419055
+    },
+    {
+      nombre: 'Fresenius Medical Care',
+      tratamiento: ['Diálisis'],
+      ciudad: 'Rosario',
+      privado: true,
+      latitud: -32.9615321,
+      longitud: -60.6711991
+    },
 
-    function generateMarkers(centros) {
-      centros.forEach(c => {
-        L.marker([c.latitud, c.longitud], {
-          icon: greenIcon
-        }).addTo(mymap);
-      });
-    }
+    //CORDOBA
+    {
+      nombre: 'ATERYM Alta Gracia',
+      tratamiento: ['Diálisis'],
+      ciudad: 'Alta Gracia',
+      privado: false,
+      latitud: -31.6563500,
+      longitud: -64.4319003
+    },
+    {
+      nombre: 'ATERYM Carlos Paz',
+      tratamiento: ['Diálisis'],
+      ciudad: 'Alta Gracia',
+      privado: false,
+      latitud: -31.403101,
+      longitud: -64.4772456
+    },
+  ]
+</script>
 
-    listadoCentros = 
-    [
-      //ROSARIO
-      {nombre: 'Hospital Provincial del Centenario', tratamiento: ['Diálisis'], ciudad: 'Rosario', privado: false, latitud: -32.93865866198946, longitud: -60.66511115823101},
-      {nombre: 'Hospital Privado de Rosario', tratamiento: ['Oncología'], ciudad: 'Rosario', privado: true, latitud: -32.9645474597667, longitud: -60.65022193124232, obraSocial: ['Medife', 'OSUNR', 'Swiss Medical']},
-      {nombre: 'Hospital de niños zona norte', tratamiento: ['Diálisis'], ciudad: 'Rosario', privado: false, latitud: -32.912240122326956, longitud: -60.68219110240826},
-      {nombre: 'Centro de Nefrología y Diálisis del Rosario', tratamiento: ['Diálisis'], ciudad: 'Rosario', privado: false, latitud: -32.9482899, longitud: -60.6557773},
-      {nombre: 'Centro Integral de Diálisis', tratamiento: ['Diálisis'], ciudad: 'Rosario', privado: false, latitud: -32.9644117, longitud: -60.6419055},
-      {nombre: 'Fresenius Medical Care', tratamiento: ['Diálisis'], ciudad: 'Rosario', privado: false, latitud: -32.9615321, longitud: -60.6711991}, 
-
-      //CORDOBA
-      {nombre: 'ATERYM Alta Gracia', tratamiento: ['Diálisis'], ciudad: 'Alta Gracia', privado: false, latitud: -31.6563500, longitud: -64.4319003},
-      {nombre: 'ATERYM Carlos Paz', tratamiento: ['Diálisis'], ciudad: 'Alta Gracia', privado: false, latitud: -31.403101, longitud: -64.4772456},
-    ]
-  
-  </script>
-
-  <style>
-    #mapid {
-      height: 25rem;
-      width: auto;
-    }
-  </style>
+<style>
+</style>
 
 </html>
