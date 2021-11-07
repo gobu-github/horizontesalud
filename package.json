@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "leaflet": "^1.7.1",
+    "leaflet.markercluster": "^1.5.3",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.13"
   }
